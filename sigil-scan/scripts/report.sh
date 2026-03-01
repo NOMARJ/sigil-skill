@@ -27,9 +27,10 @@ fi
 format_with_jq() {
   echo "$INPUT" | jq -r '
     def badge:
-      if . == "CRITICAL RISK" or . == "CRITICAL_RISK" then "CRITICAL RISK"
+      if . == "CRITICAL" or . == "CRITICAL RISK" or . == "CRITICAL_RISK" then "CRITICAL"
       elif . == "HIGH RISK" or . == "HIGH_RISK" then "HIGH RISK"
       elif . == "MEDIUM RISK" or . == "MEDIUM_RISK" then "MEDIUM RISK"
+      elif . == "CLEAN" then "CLEAN"
       else "LOW RISK"
       end;
 

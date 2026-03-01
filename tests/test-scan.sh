@@ -102,7 +102,7 @@ EXIT_CODE=0
 OUTPUT="$(bash "$SCAN_SCRIPT" "$FIXTURES_DIR/clean-project" 2>/dev/null)" || EXIT_CODE=$?
 
 assert_json_valid "$OUTPUT" "clean-project: produces valid JSON"
-assert_json_field "$OUTPUT" ".verdict" "LOW RISK" "clean-project: verdict is LOW RISK"
+assert_json_field "$OUTPUT" ".verdict" "CLEAN" "clean-project: verdict is CLEAN"
 assert_exit_code "$EXIT_CODE" 0 "clean-project: exit code 0"
 
 # ── Test: Malicious project scan ─────────────────────────────────────────
@@ -122,10 +122,10 @@ else
   VERDICT="$(echo "$OUTPUT" | python3 -c "import json,sys; print(json.load(sys.stdin).get('verdict',''))" 2>/dev/null)"
 fi
 
-if [ "$VERDICT" = "HIGH RISK" ] || [ "$VERDICT" = "CRITICAL RISK" ]; then
-  pass "malicious-project: verdict is HIGH or CRITICAL RISK ($VERDICT)"
+if [ "$VERDICT" = "HIGH RISK" ] || [ "$VERDICT" = "CRITICAL" ]; then
+  pass "malicious-project: verdict is HIGH RISK or CRITICAL ($VERDICT)"
 else
-  fail "malicious-project: verdict is HIGH or CRITICAL RISK" "got $VERDICT"
+  fail "malicious-project: verdict is HIGH RISK or CRITICAL" "got $VERDICT"
 fi
 
 # Should have findings
