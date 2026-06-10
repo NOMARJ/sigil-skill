@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "$schema": "nomark-graph-v1",
+  "description": "Traceability graph: Epic \u2192 Feature \u2192 Story \u2192 Session \u2192 Decision \u2192 Commit. Auto-maintained by session-end hook and /memory save.",
+  "last_rebuilt": "2026-06-10T19:40:50.785317",
+  "nodes": {
+    "commit:a2a2832": {
+      "type": "commit",
+      "hash": "a2a2832",
+      "message": "docs: Update skill paths to be relative and clarify verdict strings",
+      "date": "2026-06-10T19:40:28+10:00"
+    }
+  },
+  "edges": []
+}
